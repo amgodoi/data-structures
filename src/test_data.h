@@ -9,6 +9,8 @@
 #include <config.h>
 #endif
 
+#include <stdbool.h>
+
 /* bool to string */
 #define btoa(x) ((x)?"true":"false")
 
@@ -19,8 +21,10 @@ struct data_t
     int value;
 };
 
-void print_data(void *param);
-void free_data(void *param);
+extern void print_data(void *param, void *, bool *);
+extern void print_data_count(void *param, void *param_aux, bool *);
+extern void print_data_count_stop(void *param, void *param_aux, bool *stop);
+extern void free_data(void *param);
 
 #endif /* ifndef _TEST_DATA_H */
 
