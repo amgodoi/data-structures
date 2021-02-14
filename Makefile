@@ -11,6 +11,7 @@ INC_FLAGS := $(addprefix -I,$(INC_DIRS))
 
 CC = gcc
 USER_FLAGS = 
+#CPPFLAGS ?= $(INC_FLAGS) $(USER_FLAGS) -MMD -MP -Wall
 CPPFLAGS ?= $(INC_FLAGS) $(USER_FLAGS) -MMD -MP -Wall -Werror
 
 $(TARGET): $(OBJS)

@@ -42,12 +42,14 @@ generic_list_t *generic_list_destroy(generic_list_t *list, void(*destroy)(void *
 }
 
 /**/
-size_t generic_list_size(generic_list_t *list) {
+size_t generic_list_size(generic_list_t *list) 
+{
     return (list == NULL) ? 0 : list->size;
 }
 
 /**/
-bool generic_list_is_empty(generic_list_t *list) {
+bool generic_list_is_empty(generic_list_t *list) 
+{
     return (list == NULL) ? true : (list->size == 0);
 }
 
@@ -118,7 +120,8 @@ void *generic_list_pop_front(generic_list_t *list)
 }
 
 /**/
-bool generic_list_push_back(generic_list_t *list, void *data) {
+bool generic_list_push_back(generic_list_t *list, void *data) 
+{
     generic_list_node_t *node = malloc(sizeof(generic_list_node_t));
     if (node == NULL) {
         return false;
@@ -141,7 +144,8 @@ bool generic_list_push_back(generic_list_t *list, void *data) {
 }
 
 /**/
-void *generic_list_get_back(generic_list_t *list) {
+void *generic_list_get_back(generic_list_t *list) 
+{
     generic_list_node_t *node = NULL;
     void *data = NULL;
   
@@ -156,7 +160,8 @@ void *generic_list_get_back(generic_list_t *list) {
 }
 
 /**/
-void *generic_list_pop_back(generic_list_t *list) {
+void *generic_list_pop_back(generic_list_t *list) 
+{
     generic_list_node_t *node = NULL;
     void *data = NULL;
   
@@ -181,16 +186,24 @@ void *generic_list_pop_back(generic_list_t *list) {
 }
 
 /**/
-void generic_list_apply(generic_list_t *list, void(*apply)(void *)) {
+void generic_list_apply(generic_list_t *list, void(*apply)(void *, void*, bool *), void *data_aux, bool *stop) 
+{
     for (generic_list_node_t *node = list->head; node != NULL; node = node->next) {
-        apply(node->data);
+        if (stop && *stop) {
+            break;
+        }
+        apply(node->data, data_aux, stop);
     }
 }
 
 /**/
-void generic_list_apply_reverse(generic_list_t *list, void(*apply)(void *)) {
+void generic_list_apply_reverse(generic_list_t *list, void(*apply)(void *, void*, bool *), void *data_aux, bool *stop)
+{
     for (generic_list_node_t *node = list->tail; node != NULL; node = node->prev) {
-        apply(node->data);
+        if (stop && *stop) {
+            break;
+        }
+        apply(node->data, data_aux, stop);
     }
 }
 
