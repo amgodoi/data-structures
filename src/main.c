@@ -13,11 +13,11 @@
 
 int main(int argc, char *argv[])
 {
-    printf("*****Testing list as queue*****\n");
+    printf("***** Testing list as queue *****\n");
     test_generic_list_queue();
     printf("\n");
     
-    printf("*****Testing list as stack*****\n");
+    printf("***** Testing list as stack *****\n");
     test_generic_list_stack();
     printf("\n");
 }

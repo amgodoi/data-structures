@@ -27,79 +27,79 @@ void test_generic_list_queue()
     size_t count = 0;
     bool stop = false;
     
-    printf("Is list empty? %s, size: %lu\n", btoa(generic_list_is_empty(list)), generic_list_size(list));
-    printf("Creating list...\n");
+    printf("-> Is list empty? %s, size: %lu\n", btoa(generic_list_is_empty(list)), generic_list_size(list));
+    printf("-> Creating list...\n");
     list = generic_list_create(); 
 
-    printf("Is list empty? %s, size: %lu\n", btoa(generic_list_is_empty(list)), generic_list_size(list));
+    printf("-> Is list empty? %s, size: %lu\n", btoa(generic_list_is_empty(list)), generic_list_size(list));
     
-    printf("Pushing back... AAA,1\n");
+    printf("-> Pushing back... AAA,1\n");
     data1 = malloc(sizeof(data_t));
     data1->desc = "AAA";
     data1->value = 1;
     generic_list_push_back(list, data1);
 
-    printf("Pushing back... BBB,2\n");
+    printf("-> Pushing back... BBB,2\n");
     data2 = malloc(sizeof(data_t));
     data2->desc = "BBB";
     data2->value = 2;
     generic_list_push_back(list, data2);
 
-    printf("Pushing back... CCC,3\n");
+    printf("-> Pushing back... CCC,3\n");
     data3 = malloc(sizeof(data_t));
     data3->desc = "CCC";
     data3->value = 3;
     generic_list_push_back(list, data3);
    
-    printf("Is list empty? %s, size: %lu\n", btoa(generic_list_is_empty(list)), generic_list_size(list));
+    printf("-> Is list empty? %s, size: %lu\n", btoa(generic_list_is_empty(list)), generic_list_size(list));
 
-    printf("Applying all (print)...\n");
+    printf("-> Applying all (print)...\n");
     generic_list_apply(list, print_data, NULL, NULL);
     
-    printf("Applying all (print count)...\n");
+    printf("-> Applying all (print count)...\n");
     count = 0;
     stop = false;
     generic_list_apply(list, print_data_count, &count, NULL);
     
-    printf("Applying all (print count stop)...\n");
+    printf("-> Applying all (print count stop)...\n");
     count = 0;
     stop = false;
     generic_list_apply(list, print_data_count_stop, &count, &stop);
     
-    printf("Applying all reverse (print)...\n");
+    printf("-> Applying all reverse (print)...\n");
     generic_list_apply_reverse(list, print_data, NULL, NULL);
     
-    printf("Applying all reverse (print count)...\n");
+    printf("-> Applying all reverse (print count)...\n");
     count = 0;
     stop = false;
     generic_list_apply_reverse(list, print_data_count, &count, NULL);
     
-    printf("Applying all reverse (print count stop)...\n");
+    printf("-> Applying all reverse (print count stop)...\n");
     count = 0;
     stop = false;
     generic_list_apply_reverse(list, print_data_count_stop, &count, &stop);
 
-    printf("Getting front...\n");
+    printf("-> Getting front...\n");
     data = generic_list_get_front(list);
-    printf("Prints data from get_front:\n");
+    printf("-> Prints data from get_front:\n");
     print_data(data, NULL, NULL);
     
-    printf("Getting back...\n");
+    printf("-> Getting back...\n");
     data = generic_list_get_back(list);
-    printf("Prints data from get_back:\n");
+    printf("-> Prints data from get_back:\n");
     print_data(data, NULL, NULL);
     
-    printf("Is list empty? %s, size: %lu\n", btoa(generic_list_is_empty(list)), generic_list_size(list));
+    printf("-> Is list empty? %s, size: %lu\n", btoa(generic_list_is_empty(list)), generic_list_size(list));
         
-    printf("Popping front...\n");
+    printf("-> Popping front...\n");
     data_ret1 = generic_list_pop_front(list);
     print_data(data_ret1, NULL, NULL);
 
-    printf("Popping front...\n");
+    printf("-> Popping front...\n");
     data_ret2 = generic_list_pop_front(list);
     print_data(data_ret2, NULL, NULL);
 
-    printf("Popping front...\n");
+    printf("-> Popping front...\n");
     data_ret3 = generic_list_pop_front(list);
     print_data(data_ret3, NULL, NULL);
         
@@ -107,17 +107,17 @@ void test_generic_list_queue()
     free(data_ret2);
     free(data_ret3);
     
-    printf("Is list empty? %s, size: %lu\n", btoa(generic_list_is_empty(list)), generic_list_size(list));
+    printf("-> Is list empty? %s, size: %lu\n", btoa(generic_list_is_empty(list)), generic_list_size(list));
    
-    printf("Destroying list...\n");;
+    printf("-> Destroying list...\n");;
     list = generic_list_destroy(list, NULL); 
     
-    printf("Is list empty? %s, size: %lu\n", btoa(generic_list_is_empty(list)), generic_list_size(list));
+    printf("-> Is list empty? %s, size: %lu\n", btoa(generic_list_is_empty(list)), generic_list_size(list));
     
-    printf("Creating list...\n");
+    printf("-> Creating list...\n");
     list = generic_list_create(); 
     
-    printf("Pushing back 3 times... AAA,1 BBB,2 CCC,3\n");
+    printf("-> Pushing back 3 times... AAA,1 BBB,2 CCC,3\n");
     data1 = malloc(sizeof(data_t));
     data1->desc = "AAA";
     data1->value = 1;
@@ -131,12 +131,12 @@ void test_generic_list_queue()
     data3->value = 3;
     generic_list_push_back(list, data3);
     
-    printf("Is list empty? %s, size: %lu\n", btoa(generic_list_is_empty(list)), generic_list_size(list));
+    printf("-> Is list empty? %s, size: %lu\n", btoa(generic_list_is_empty(list)), generic_list_size(list));
     
-    printf("Destroying list (all)...\n");
+    printf("-> Destroying list (all)...\n");
     list = generic_list_destroy(list, free_data); 
 
-    printf("Is list empty? %s, size: %lu\n", btoa(generic_list_is_empty(list)), generic_list_size(list));
+    printf("-> Is list empty? %s, size: %lu\n", btoa(generic_list_is_empty(list)), generic_list_size(list));
 }
 
 /**/
@@ -153,79 +153,79 @@ void test_generic_list_stack()
     size_t count = 0;
     bool stop = false;
     
-    printf("Is list empty? %s, size: %lu\n", btoa(generic_list_is_empty(list)), generic_list_size(list));
-    printf("Creating list...\n");
+    printf("-> Is list empty? %s, size: %lu\n", btoa(generic_list_is_empty(list)), generic_list_size(list));
+    printf("-> Creating list...\n");
     list = generic_list_create(); 
 
-    printf("Is list empty? %s, size: %lu\n", btoa(generic_list_is_empty(list)), generic_list_size(list));
+    printf("-> Is list empty? %s, size: %lu\n", btoa(generic_list_is_empty(list)), generic_list_size(list));
     
-    printf("Pushing front... AAA,1\n");
+    printf("-> Pushing front... AAA,1\n");
     data1 = malloc(sizeof(data_t));
     data1->desc = "AAA";
     data1->value = 1;
     generic_list_push_front(list, data1);
 
-    printf("Pushing front... BBB,2\n");
+    printf("-> Pushing front... BBB,2\n");
     data2 = malloc(sizeof(data_t));
     data2->desc = "BBB";
     data2->value = 2;
     generic_list_push_front(list, data2);
 
-    printf("Pushing front... CCC,3\n");
+    printf("-> Pushing front... CCC,3\n");
     data3 = malloc(sizeof(data_t));
     data3->desc = "CCC";
     data3->value = 3;
     generic_list_push_front(list, data3);
    
-    printf("Is list empty? %s, size: %lu\n", btoa(generic_list_is_empty(list)), generic_list_size(list));
+    printf("-> Is list empty? %s, size: %lu\n", btoa(generic_list_is_empty(list)), generic_list_size(list));
 
-    printf("Applying all (print)...\n");
+    printf("-> Applying all (print)...\n");
     generic_list_apply(list, print_data, NULL, NULL);
     
-    printf("Applying all (print count)...\n");
+    printf("-> Applying all (print count)...\n");
     count = 0;
     stop = false;
     generic_list_apply(list, print_data_count, &count, NULL);
     
-    printf("Applying all (print count stop)...\n");
+    printf("-> Applying all (print count stop)...\n");
     count = 0;
     stop = false;
     generic_list_apply(list, print_data_count_stop, &count, &stop);
     
-    printf("Applying all reverse (print)...\n");
+    printf("-> Applying all reverse (print)...\n");
     generic_list_apply_reverse(list, print_data, NULL, NULL);
     
-    printf("Applying all reverse (print count)...\n");
+    printf("-> Applying all reverse (print count)...\n");
     count = 0;
     stop = false;
     generic_list_apply_reverse(list, print_data_count, &count, NULL);
     
-    printf("Applying all reverse (print count stop)...\n");
+    printf("-> Applying all reverse (print count stop)...\n");
     count = 0;
     stop = false;
     generic_list_apply_reverse(list, print_data_count_stop, &count, &stop);
 
-    printf("Getting front...\n");
+    printf("-> Getting front...\n");
     data = generic_list_get_front(list);
-    printf("Prints data from get_front:\n");
+    printf("-> Prints data from get_front:\n");
     print_data(data, NULL, NULL);
     
-    printf("Getting back...\n");
+    printf("-> Getting back...\n");
     data = generic_list_get_back(list);
-    printf("Prints data from get_back:\n");
+    printf("-> Prints data from get_back:\n");
     print_data(data, NULL, NULL);
     
-    printf("Is list empty? %s, size: %lu\n", btoa(generic_list_is_empty(list)), generic_list_size(list));
+    printf("-> Is list empty? %s, size: %lu\n", btoa(generic_list_is_empty(list)), generic_list_size(list));
         
-    printf("Popping front...\n");
+    printf("-> Popping front...\n");
     data_ret1 = generic_list_pop_front(list);
     print_data(data_ret1, NULL, NULL);
 
-    printf("Popping front...\n");
+    printf("-> Popping front...\n");
     data_ret2 = generic_list_pop_front(list);
     print_data(data_ret2, NULL, NULL);
 
-    printf("Popping front...\n");
+    printf("-> Popping front...\n");
     data_ret3 = generic_list_pop_front(list);
     print_data(data_ret3, NULL, NULL);
         
@@ -233,17 +233,17 @@ void test_generic_list_stack()
     free(data_ret2);
     free(data_ret3);
     
-    printf("Is list empty? %s, size: %lu\n", btoa(generic_list_is_empty(list)), generic_list_size(list));
+    printf("-> Is list empty? %s, size: %lu\n", btoa(generic_list_is_empty(list)), generic_list_size(list));
    
-    printf("Destroying list...\n");;
+    printf("-> Destroying list...\n");;
     list = generic_list_destroy(list, NULL); 
     
-    printf("Is list empty? %s, size: %lu\n", btoa(generic_list_is_empty(list)), generic_list_size(list));
+    printf("-> Is list empty? %s, size: %lu\n", btoa(generic_list_is_empty(list)), generic_list_size(list));
     
-    printf("Creating list...\n");
+    printf("-> Creating list...\n");
     list = generic_list_create(); 
     
-    printf("Pushing front 3 times... AAA,1 BBB,2 CCC,3\n");
+    printf("-> Pushing front 3 times... AAA,1 BBB,2 CCC,3\n");
     data1 = malloc(sizeof(data_t));
     data1->desc = "AAA";
     data1->value = 1;
@@ -257,11 +257,11 @@ void test_generic_list_stack()
     data3->value = 3;
     generic_list_push_front(list, data3);
     
-    printf("Is list empty? %s, size: %lu\n", btoa(generic_list_is_empty(list)), generic_list_size(list));
+    printf("-> Is list empty? %s, size: %lu\n", btoa(generic_list_is_empty(list)), generic_list_size(list));
     
-    printf("Destroying list (all)...\n");
+    printf("-> Destroying list (all)...\n");
     list = generic_list_destroy(list, free_data); 
 
-    printf("Is list empty? %s, size: %lu\n", btoa(generic_list_is_empty(list)), generic_list_size(list));
+    printf("-> Is list empty? %s, size: %lu\n", btoa(generic_list_is_empty(list)), generic_list_size(list));
 }
 
