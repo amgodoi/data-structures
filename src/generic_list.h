@@ -30,8 +30,9 @@ struct generic_list_t
     size_t size;
 };
 
-/* Function to apply to data list */
-typedef void (*func_apply_to_data_t)(void *data, void *data_aux, bool *stop);
+/* Function to apply to data list.
+ * Data node, auxiliary data and a condition to stop the list loop. */
+typedef void (*apply_t)(void *data, void *data_aux, bool *stop);
 
 /* Creates a generic list. 
  * Returns NULL if out of memory (errno == ENOMEM). */
@@ -69,12 +70,10 @@ extern void *generic_list_get_back(generic_list_t *list);
 extern void *generic_list_pop_back(generic_list_t *list);
 
 /* Applies function to list from head until tail. */
-extern void generic_list_apply(generic_list_t *list, void(*apply)(void *, void*, bool *), 
-        void *data_aux, bool *stop);
+extern void generic_list_apply(generic_list_t *list, apply_t apply, void *data_aux);
 
 /* Applies function to list from tail until head. */
-extern void generic_list_apply_reverse(generic_list_t *list, void(*apply)(void *, void*, bool *), 
-        void *data_aux, bool *stop);
+extern void generic_list_apply_reverse(generic_list_t *list, apply_t apply, void *data_aux);
 
 #endif /* ifndef _GENERIC_LIST_H */
 

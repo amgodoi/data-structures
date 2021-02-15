@@ -25,7 +25,6 @@ void test_generic_list_queue()
     data_t *data_ret2 = NULL;
     data_t *data_ret3 = NULL;
     size_t count = 0;
-    bool stop = false;
     
     printf("-> Is list empty? %s, size: %lu\n", btoa(generic_list_is_empty(list)), generic_list_size(list));
     printf("-> Creating list...\n");
@@ -54,30 +53,26 @@ void test_generic_list_queue()
     printf("-> Is list empty? %s, size: %lu\n", btoa(generic_list_is_empty(list)), generic_list_size(list));
 
     printf("-> Applying all (print)...\n");
-    generic_list_apply(list, print_data, NULL, NULL);
+    generic_list_apply(list, print_data, NULL);
     
     printf("-> Applying all (print count)...\n");
     count = 0;
-    stop = false;
-    generic_list_apply(list, print_data_count, &count, NULL);
+    generic_list_apply(list, print_data_count, &count);
     
-    printf("-> Applying all (print count stop)...\n");
+    printf("-> Applying all (print count stop before 2)...\n");
     count = 0;
-    stop = false;
-    generic_list_apply(list, print_data_count_stop, &count, &stop);
+    generic_list_apply(list, print_data_count_stop, &count);
     
     printf("-> Applying all reverse (print)...\n");
-    generic_list_apply_reverse(list, print_data, NULL, NULL);
+    generic_list_apply_reverse(list, print_data, NULL);
     
     printf("-> Applying all reverse (print count)...\n");
     count = 0;
-    stop = false;
-    generic_list_apply_reverse(list, print_data_count, &count, NULL);
+    generic_list_apply_reverse(list, print_data_count, &count);
     
-    printf("-> Applying all reverse (print count stop)...\n");
+    printf("-> Applying all reverse (print count stop before 2)...\n");
     count = 0;
-    stop = false;
-    generic_list_apply_reverse(list, print_data_count_stop, &count, &stop);
+    generic_list_apply_reverse(list, print_data_count_stop, &count);
 
     printf("-> Getting front...\n");
     data = generic_list_get_front(list);
@@ -151,7 +146,6 @@ void test_generic_list_stack()
     data_t *data_ret2 = NULL;
     data_t *data_ret3 = NULL;
     size_t count = 0;
-    bool stop = false;
     
     printf("-> Is list empty? %s, size: %lu\n", btoa(generic_list_is_empty(list)), generic_list_size(list));
     printf("-> Creating list...\n");
@@ -180,30 +174,26 @@ void test_generic_list_stack()
     printf("-> Is list empty? %s, size: %lu\n", btoa(generic_list_is_empty(list)), generic_list_size(list));
 
     printf("-> Applying all (print)...\n");
-    generic_list_apply(list, print_data, NULL, NULL);
+    generic_list_apply(list, print_data, NULL);
     
     printf("-> Applying all (print count)...\n");
     count = 0;
-    stop = false;
-    generic_list_apply(list, print_data_count, &count, NULL);
+    generic_list_apply(list, print_data_count, &count);
     
-    printf("-> Applying all (print count stop)...\n");
+    printf("-> Applying all (print count stop before 2)...\n");
     count = 0;
-    stop = false;
-    generic_list_apply(list, print_data_count_stop, &count, &stop);
+    generic_list_apply(list, print_data_count_stop, &count);
     
     printf("-> Applying all reverse (print)...\n");
-    generic_list_apply_reverse(list, print_data, NULL, NULL);
+    generic_list_apply_reverse(list, print_data, NULL);
     
     printf("-> Applying all reverse (print count)...\n");
     count = 0;
-    stop = false;
-    generic_list_apply_reverse(list, print_data_count, &count, NULL);
+    generic_list_apply_reverse(list, print_data_count, &count);
     
-    printf("-> Applying all reverse (print count stop)...\n");
+    printf("-> Applying all reverse (print count stop before 2)...\n");
     count = 0;
-    stop = false;
-    generic_list_apply_reverse(list, print_data_count_stop, &count, &stop);
+    generic_list_apply_reverse(list, print_data_count_stop, &count);
 
     printf("-> Getting front...\n");
     data = generic_list_get_front(list);

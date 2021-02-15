@@ -186,24 +186,24 @@ void *generic_list_pop_back(generic_list_t *list)
 }
 
 /**/
-void generic_list_apply(generic_list_t *list, void(*apply)(void *, void*, bool *), void *data_aux, bool *stop) 
+void generic_list_apply(generic_list_t *list, apply_t apply, void *data_aux)
 {
-    for (generic_list_node_t *node = list->head; node != NULL; node = node->next) {
-        if (stop && *stop) {
-            break;
-        }
-        apply(node->data, data_aux, stop);
+    generic_list_node_t *node;
+    bool stop = false;
+
+    for (node = list->head; (!stop) && (node != NULL); node = node->next) {
+        apply(node->data, data_aux, &stop);
     }
 }
 
 /**/
-void generic_list_apply_reverse(generic_list_t *list, void(*apply)(void *, void*, bool *), void *data_aux, bool *stop)
+void generic_list_apply_reverse(generic_list_t *list, apply_t apply, void *data_aux)
 {
-    for (generic_list_node_t *node = list->tail; node != NULL; node = node->prev) {
-        if (stop && *stop) {
-            break;
-        }
-        apply(node->data, data_aux, stop);
+    generic_list_node_t *node;
+    bool stop = false;
+    
+    for (node = list->tail; (!stop) && (node != NULL); node = node->prev) {
+        apply(node->data, data_aux, &stop);
     }
 }
 
