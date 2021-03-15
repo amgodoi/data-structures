@@ -24,7 +24,7 @@ generic_list_t *generic_list_create()
 }
 
 /**/
-generic_list_t *generic_list_destroy(generic_list_t *list, void(*destroy)(void *)) 
+generic_list_t *generic_list_destroy(generic_list_t *list, destroy_t destroy) 
 {
     generic_list_node_t *next = NULL;
 

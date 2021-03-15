@@ -31,8 +31,11 @@ struct generic_list_t
 };
 
 /* Function to apply to data list.
- * Data node, auxiliary data and a condition to stop the list loop. */
+ * Data node, auxiliary data and condition to stop the list loop. */
 typedef void (*apply_t)(void *data, void *data_aux, bool *stop);
+
+/* Function to free data node. */
+typedef void (*destroy_t)(void *data);
 
 /* Creates a generic list. 
  * Returns NULL if out of memory (errno == ENOMEM). */
@@ -41,7 +44,7 @@ extern generic_list_t *generic_list_create();
 /* Destroys the generic list (frees all nodes).
  * Optional destroy() function to free each previous allocated data memory. 
  * Returns NULL always. */
-extern generic_list_t *generic_list_destroy(generic_list_t *list, void(*destroy)(void *)); 
+extern generic_list_t *generic_list_destroy(generic_list_t *list, destroy_t destroy); 
 
 /* Returns list size. */
 extern size_t generic_list_size(generic_list_t *list); 
