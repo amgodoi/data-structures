@@ -10,6 +10,7 @@
 #include <stdlib.h>
 
 #include "test_generic_list.h"
+#include "test_generic_btree.h"
 
 int main(int argc, char *argv[])
 {
@@ -19,6 +20,10 @@ int main(int argc, char *argv[])
     
     printf("***** Testing list as stack *****\n");
     test_generic_list_stack();
+    printf("\n");
+    
+    printf("***** Testing btree *****\n");
+    test_generic_btree();
     printf("\n");
 }
 

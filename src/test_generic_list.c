@@ -29,7 +29,6 @@ void test_generic_list_queue()
     printf("-> Is list empty? %s, size: %lu\n", btoa(generic_list_is_empty(list)), generic_list_size(list));
     printf("-> Creating list...\n");
     list = generic_list_create(); 
-
     printf("-> Is list empty? %s, size: %lu\n", btoa(generic_list_is_empty(list)), generic_list_size(list));
     
     printf("-> Pushing back... AAA,1\n");
@@ -104,7 +103,7 @@ void test_generic_list_queue()
     
     printf("-> Is list empty? %s, size: %lu\n", btoa(generic_list_is_empty(list)), generic_list_size(list));
    
-    printf("-> Destroying list...\n");;
+    printf("-> Destroying list...\n");
     list = generic_list_destroy(list, NULL); 
     
     printf("-> Is list empty? %s, size: %lu\n", btoa(generic_list_is_empty(list)), generic_list_size(list));
@@ -225,7 +224,7 @@ void test_generic_list_stack()
     
     printf("-> Is list empty? %s, size: %lu\n", btoa(generic_list_is_empty(list)), generic_list_size(list));
    
-    printf("-> Destroying list...\n");;
+    printf("-> Destroying list...\n");
     list = generic_list_destroy(list, NULL); 
     
     printf("-> Is list empty? %s, size: %lu\n", btoa(generic_list_is_empty(list)), generic_list_size(list));

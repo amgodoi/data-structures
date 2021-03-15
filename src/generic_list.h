@@ -30,53 +30,47 @@ struct generic_list_t
     size_t size;
 };
 
-/* Function to apply to data list.
- * Data node, auxiliary data and condition to stop the list loop. */
-typedef void (*apply_t)(void *data, void *data_aux, bool *stop);
+/* Destroy function */
+typedef void (*generic_list_destroy_t)(void *data);
 
-/* Function to free data node. */
-typedef void (*destroy_t)(void *data);
+/* Apply function*/
+typedef void (*generic_list_apply_t)(void *data, void *data_aux, bool *stop);
 
-/* Creates a generic list. 
- * Returns NULL if out of memory (errno == ENOMEM). */
+/**/
 extern generic_list_t *generic_list_create(); 
 
-/* Destroys the generic list (frees all nodes).
- * Optional destroy() function to free each previous allocated data memory. 
- * Returns NULL always. */
-extern generic_list_t *generic_list_destroy(generic_list_t *list, destroy_t destroy); 
+/**/
+extern generic_list_t *generic_list_destroy(generic_list_t *list, generic_list_destroy_t destroy); 
 
-/* Returns list size. */
+/**/
 extern size_t generic_list_size(generic_list_t *list); 
 
-/* Returns true if list is empty. */
+/**/
 extern bool generic_list_is_empty(generic_list_t *list); 
 
-/* Adds data to head. 
- * Returns false if out of memory (errno == ENOMEM). */
+/**/
 extern bool generic_list_push_front(generic_list_t *list, void *data);
 
-/* Returns data from head (does not free node memory). */
+/**/
 extern void *generic_list_get_front(generic_list_t *list);
 
-/* Returns data from head (frees node memory). */
+/**/
 extern void *generic_list_pop_front(generic_list_t *list);
 
-/* Adds data to tail. 
- * Returns false if out of memory (errno == ENOMEM). */
+/**/
 extern bool generic_list_push_back(generic_list_t *list, void *data);
 
-/* Returns data from tail (does not free node memory). */
+/**/
 extern void *generic_list_get_back(generic_list_t *list);
 
-/* Returns data from tail (frees node memory). */
+/**/
 extern void *generic_list_pop_back(generic_list_t *list);
 
-/* Applies function to list from head until tail. */
-extern void generic_list_apply(generic_list_t *list, apply_t apply, void *data_aux);
+/**/
+extern void generic_list_apply(generic_list_t *list, generic_list_apply_t apply, void *data_aux);
 
-/* Applies function to list from tail until head. */
-extern void generic_list_apply_reverse(generic_list_t *list, apply_t apply, void *data_aux);
+/**/
+extern void generic_list_apply_reverse(generic_list_t *list, generic_list_apply_t apply, void *data_aux);
 
 #endif /* ifndef _GENERIC_LIST_H */
 

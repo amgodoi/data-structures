@@ -14,6 +14,7 @@
 generic_list_t *generic_list_create() 
 {
     generic_list_t *list = malloc(sizeof(generic_list_t));
+
     if (list != NULL) {
         list->head = NULL;
         list->tail = NULL;
@@ -24,7 +25,7 @@ generic_list_t *generic_list_create()
 }
 
 /**/
-generic_list_t *generic_list_destroy(generic_list_t *list, destroy_t destroy) 
+generic_list_t *generic_list_destroy(generic_list_t *list, generic_list_destroy_t destroy) 
 {
     generic_list_node_t *next = NULL;
 
@@ -57,6 +58,7 @@ bool generic_list_is_empty(generic_list_t *list)
 bool generic_list_push_front(generic_list_t *list, void *data) 
 {
     generic_list_node_t *node = malloc(sizeof(generic_list_node_t));
+
     if (node == NULL) {
         return false;
     }
@@ -123,6 +125,7 @@ void *generic_list_pop_front(generic_list_t *list)
 bool generic_list_push_back(generic_list_t *list, void *data) 
 {
     generic_list_node_t *node = malloc(sizeof(generic_list_node_t));
+
     if (node == NULL) {
         return false;
     }
@@ -186,7 +189,7 @@ void *generic_list_pop_back(generic_list_t *list)
 }
 
 /**/
-void generic_list_apply(generic_list_t *list, apply_t apply, void *data_aux)
+void generic_list_apply(generic_list_t *list, generic_list_apply_t apply, void *data_aux)
 {
     generic_list_node_t *node;
     bool stop = false;
@@ -197,7 +200,7 @@ void generic_list_apply(generic_list_t *list, apply_t apply, void *data_aux)
 }
 
 /**/
-void generic_list_apply_reverse(generic_list_t *list, apply_t apply, void *data_aux)
+void generic_list_apply_reverse(generic_list_t *list, generic_list_apply_t apply, void *data_aux)
 {
     generic_list_node_t *node;
     bool stop = false;

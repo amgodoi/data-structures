@@ -25,6 +25,7 @@ extern void print_data(void *param, void *, bool *);
 extern void print_data_count(void *param, void *param_aux, bool *);
 extern void print_data_count_stop(void *param, void *param_aux, bool *stop);
 extern void free_data(void *param);
+extern int compare_data(const void *param1, const void *param2);
 
 #endif /* ifndef _TEST_DATA_H */
 

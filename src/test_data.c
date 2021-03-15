@@ -8,6 +8,7 @@
 
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 
 #include "test_data.h"
 
@@ -43,7 +44,7 @@ void print_data_count_stop(void *param, void *param_aux, bool *stop)
         printf("{%d, %s} count: %lu\n", data->value, data->desc, *count);
         (*count)++;
         if (*count == 2) {
-            printf("Stopping list loop!\n");
+            printf("Stopping loop!\n");
             *stop = true;
         }
     } else {
@@ -55,5 +56,13 @@ void print_data_count_stop(void *param, void *param_aux, bool *stop)
 void free_data(void *param)
 {
     free(param);
+}
+
+int compare_data(const void *param1, const void *param2)
+{
+    data_t *data1 = (data_t *) param1;
+    data_t *data2 = (data_t *) param2;
+
+    return strcmp(data1->desc, data2->desc);
 }
 
