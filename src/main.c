@@ -10,7 +10,7 @@
 #include <stdlib.h>
 
 #include "test_generic_list.h"
-#include "test_generic_btree.h"
+#include "test_generic_tree.h"
 
 int main(int argc, char *argv[])
 {
@@ -22,8 +22,8 @@ int main(int argc, char *argv[])
     test_generic_list_stack();
     printf("\n");
     
-    printf("***** Testing btree *****\n");
-    test_generic_btree();
+    printf("***** Testing tree *****\n");
+    test_generic_tree();
     printf("\n");
 }
 
