@@ -37,7 +37,7 @@ typedef void (*generic_list_destroy_t)(void *data);
 typedef void (*generic_list_apply_t)(void *data, void *data_aux, bool *stop);
 
 /**/
-extern generic_list_t *generic_list_create(); 
+extern generic_list_t *generic_list_create(void); 
 
 /**/
 extern generic_list_t *generic_list_destroy(generic_list_t *list, generic_list_destroy_t destroy); 

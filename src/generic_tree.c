@@ -117,11 +117,13 @@ static generic_tree_node_t *_generic_tree_node_add(generic_tree_node_t *node, vo
 /**/
 void *generic_tree_remove(generic_tree_t *tree, void *data)
 {
-    void *data_ret;
+    void *data_ret = NULL;
     generic_tree_node_t *node = _generic_tree_node_remove(tree->root, data, tree->compare, &data_ret);
 
-    tree->root = node;
-    tree->size--;
+    if (data_ret != NULL) {
+        tree->root = node;
+        tree->size--;
+    }
 
     return data_ret;
 }

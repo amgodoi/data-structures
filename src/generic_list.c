@@ -11,7 +11,7 @@
 #include "generic_list.h"
 
 /**/
-generic_list_t *generic_list_create() 
+generic_list_t *generic_list_create(void) 
 {
     generic_list_t *list = malloc(sizeof(generic_list_t));
 
